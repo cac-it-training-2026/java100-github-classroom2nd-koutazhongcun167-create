@@ -39,9 +39,19 @@ public class WarehouseManager {
 
 		int[] ABKosanArray = new int[5];
 
-
 		//ここに重複チェックおよび値の代入処理を記述する
+		for (int a = 0; a < ABKosanArray.length; a++) {
 
+			ABKosanArray[a] = (int) (Math.random() * 5) + 1;
+
+			for (int j = 0; j < a; j++) {
+
+				if (ABKosanArray[a] == ABKosanArray[j]) {
+					a--;
+					break;
+				}
+			}
+		}
 
 		System.out.println("E主任：");
 		System.out.println("AB興産の荷物の入れ替えをお願いします。\n");
@@ -57,9 +67,37 @@ public class WarehouseManager {
 		}
 		System.out.println("\nです。\n");
 
+		boolean irekae1 = false;
+		boolean irekae2 = false;
 
-		//ここに値の入れ替え処理を記述する
+		for (int i = 0; i < ABKosanArray.length; i++) {
+			if (irekae1 && irekae2) {
+				break;
+			}
+			if (ABKosanArray[i] == 1 && irekae1 == false) {
+				for (int j = 0; j < ABKosanArray.length; j++) {
+					if (ABKosanArray[j] == 3) {
+						int iti = ABKosanArray[i];
+						ABKosanArray[i] = ABKosanArray[j];
+						ABKosanArray[j] = iti;
+						irekae1 = true;
 
+						break;
+					}
+				}
+
+			} else if (ABKosanArray[i] == 2 && irekae2 == false) {
+				for (int j = 0; j < ABKosanArray.length; j++) {
+					if (ABKosanArray[j] == 4) {
+						int ni = ABKosanArray[i];
+						ABKosanArray[i] = ABKosanArray[j];
+						ABKosanArray[j] = ni;
+						irekae2 = true;
+						break;
+					}
+				}
+			}
+		}
 
 		System.out.println("入れ替え後の状態は、");
 		for (int i = 0; i < ABKosanArray.length; i++) {
