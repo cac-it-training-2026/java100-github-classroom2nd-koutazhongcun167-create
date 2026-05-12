@@ -63,32 +63,46 @@ public class WarehouseManager {
 
 	public static void main(String[] args) throws IOException {
 
-
 		//配列の宣言および初期化処理を記述する
-
+		String[] aisatsu = { "へい！らっしゃい！！", "何にしますか！今日は活きのいいコハダが入ってますよ", "まいどあり！！またどうぞ" };
 
 		System.out.println("Yさん：");
 		System.out.println("まず、MISAKI○の今の状態を確かめようかな。\n");
 
-
 		//三つのあいさつパターンの出力処理を記述する
-
+		System.out.println("あいさつパターン1...「" + aisatsu[0] + "」\n");
+		System.out.println("あいさつパターン2...「" + aisatsu[1] + "」\n");
+		System.out.println("あいさつパターン3...「" + aisatsu[2] + "」\n");
 
 		System.out.println("Yさん：");
 		System.out.println("うわぁ～。どれか変更しよう。\n");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-
 		//入力処理および入力値の代入処理
+		System.out.print("どのパターンを変更しますか＞");
+		String str = br.readLine();
+		int aisatu = Integer.parseInt(str);
 
+		System.out.print("あいさつを吹き込んでください＞");
+		if (aisatu == 1) {
+			String A = br.readLine();
+			aisatsu[0] = A;
+		} else if (aisatu == 2) {
+			String B = br.readLine();
+			aisatsu[1] = B;
+		} else if (aisatu == 3) {
+			String C = br.readLine();
+			aisatsu[2] = C;
+		}
 
 		System.out.println("\nYさん：");
 		System.out.println("よし。もう一度確かめてみよう。\n");
 
-
 		//三つのあいさつパターンの出力処理を記述する
-
+		System.out.println("あいさつパターン1...「" + aisatsu[0] + "」\n");
+		System.out.println("あいさつパターン2...「" + aisatsu[1] + "」\n");
+		System.out.println("あいさつパターン3...「" + aisatsu[2] + "」\n");
 
 		System.out.println("Yさん：");
 		System.out.println("まあ少しはマシになったかな。");
