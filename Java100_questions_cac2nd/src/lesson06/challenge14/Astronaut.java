@@ -44,42 +44,88 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 //ここにSpaceshipクラスを記述する
+class Spaceship {
+	public Spaceship() {
+	}
 
+	private int air;
+	private int fuel;
+	private static int number;
+
+	public Spaceship(int air, int fuel) {
+		this.air = air;
+		this.fuel = fuel;
+	}
+
+	public int getFuel() {
+		return fuel;
+	}
+
+	public void setFuel(int fuel) {
+		this.fuel = fuel;
+	}
+
+	public int getAir() {
+		return air;
+	}
+
+	public void setAir(int air) {
+		this.air = air;
+	}
+
+	//ここに適切な処理を記述する。
+	public static void count() {
+		System.out.println("宇宙船は全部で" + number + "台あります。");
+	}
+
+	public boolean checkFuel(double fuelNum) {
+		if (Math.floor(fuelNum) >= 12.0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean compareFuel(double fuelNum, double lightYear) {
+		if (lightYear < fuelNum) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
 
 public class Astronaut {
 
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        System.out.println("宇宙飛行士：");
-        System.out.println("航続距離が気になるな～。");
-        System.out.println("燃料と比べてみるか。\n");
+		System.out.println("宇宙飛行士：");
+		System.out.println("航続距離が気になるな～。");
+		System.out.println("燃料と比べてみるか。\n");
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("航続距離を入力してください＞");
-        String lightYearStr = br.readLine();
-        double lightYear = Double.parseDouble(lightYearStr);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("航続距離を入力してください＞");
+		String lightYearStr = br.readLine();
+		double lightYear = Double.parseDouble(lightYearStr);
 
-        System.out.print("燃料を入力してください＞");
-        String fuelStr = br.readLine();
-        double fuelNum = Double.parseDouble(fuelStr);
+		System.out.print("燃料を入力してください＞");
+		String fuelStr = br.readLine();
+		double fuelNum = Double.parseDouble(fuelStr);
 
+		//ここに適切な処理を記述する
+		Spaceship spa = new Spaceship();
 
-        //ここに適切な処理を記述する
+		boolean isCheck = false;
 
+		//ここに適切な処理を記述する
+		isCheck = spa.compareFuel(fuelNum, lightYear);
 
-        boolean isCheck = false;
-
-
-        //ここに適切な処理を記述する
-
-
-        System.out.println("\n宇宙飛行士：");
-        if(isCheck){
-            System.out.println("よし！たどり着けるぞ。");
-        } else {
-            System.out.println("これじゃあたどり着けないよう。どうしよう。。。");
-        }
-    }
+		System.out.println("\n宇宙飛行士：");
+		if (isCheck) {
+			System.out.println("よし！たどり着けるぞ。");
+		} else {
+			System.out.println("これじゃあたどり着けないよう。どうしよう。。。");
+		}
+	}
 }

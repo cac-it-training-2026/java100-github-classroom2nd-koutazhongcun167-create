@@ -23,37 +23,124 @@
 
 package lesson07.challenge11;
 
-
 //ここにSamuraiクラスを記述
+class Samurai {
 
+	protected String name;
+
+	void fight() {
+		System.out.println("戦うよ～。");
+	}
+
+	void work() {
+		System.out.println("何かして働くよ～");
+	}
+
+}
 
 //ここにRetainerクラスを記述
+class Retainer extends Samurai {
 
+	protected String domain;
 
-//ここにRoninクラスを記述
+	public Retainer() {
+		super();
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 
+	public Retainer(String name, String domain) {
+		this.name = name;
+		this.domain = domain;
+	}
+
+	void getPaid() {
+		System.out.println("給料をもらうよ～。");
+	}
+
+	@Override
+	void work() {
+		System.out.println("年貢を取り立てるよ～。");
+	}
+
+	@Override
+	public String toString() {
+		return "拙者は" + domain + "藩士、" + name + "ともうす。";
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		boolean isMatch;
+		Retainer retainer = (Retainer) object;
+		if (this.domain.equals(retainer.domain)) {
+			isMatch = true;
+		} else {
+			isMatch = false;
+		}
+		return isMatch;
+	}
+}
+
+class Ronin extends Samurai {
+
+	public Ronin() {
+		super();
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
+	public Ronin(String name) {
+		this.name = name;
+	}
+
+	void covered() {
+		System.out.println("傘張りするよ～。");
+	}
+
+	@Override
+	void work() {
+		System.out.println("傘張るよ～。");
+	}
+
+	@Override
+	public String toString() {
+		return "拙者は武州○△□村の浪人、" + name + "ともうす。";
+	}
+}
 
 public class CastleTown {
 
-    public static void main(String[] args) {
-        System.out.println("5人の侍を配列に詰めます。\n");
+	public static void main(String[] args) {
+		System.out.println("5人の侍を配列に詰めます。\n");
 
+		//ここに適切な処理を記述
+		Samurai[] samurais = new Samurai[5];
+		Samurai samurai;
+		for (int i = 0; i < samurais.length; i++) {
+			int sam = (int) (Math.random() * 2);
+			if (sam == 0) {
+				samurai = new Retainer();
+			} else {
+				samurai = new Ronin();
+			}
+			samurais[i] = samurai;
+		}
 
-        //ここに適切な処理を記述
+		System.out.println("詰め終わりました。\n");
+		System.out.println("それぞれの人数を表示してみます。\n");
 
+		int retainerCount = 0;
+		int roninCount = 0;
 
-        System.out.println("詰め終わりました。\n");
-        System.out.println("それぞれの人数を表示してみます。\n");
+		//ここに適切な処理を記述
+		for (int i = 0; i < samurais.length; i++) {
+			if (samurais[i] instanceof Retainer) {
+				retainerCount++;
+			} else if (samurais[i] instanceof Ronin) {
+				roninCount++;
+			}
 
+		}
 
-        int retainerCount = 0;
-        int roninCount = 0;
-
-
-        //ここに適切な処理を記述
-
-
-        System.out.println("藩士：" + retainerCount + "人");
-        System.out.println("\n浪人：" + roninCount + "人");
-    }
+		System.out.println("藩士：" + retainerCount + "人");
+		System.out.println("\n浪人：" + roninCount + "人");
+	}
 }

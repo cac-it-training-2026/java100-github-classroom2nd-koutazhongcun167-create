@@ -159,9 +159,9 @@ public class RobotMaker {
 		Robot robot = new Robot();
 		String eggdish = robot.makeEggDishes(flourNum, sugarNum, eggNum, butterNum);
 		if (eggdish == null) {
-			System.out.println("何も作れません。");
+			System.out.println("\n何も作れません。");
 		} else {
-			System.out.println(eggdish + "が出来ました。");
+			System.out.println("\n" + eggdish + "が出来ました。");
 		}
 
 		System.out.println("\nあとかたづけをします。\n");
